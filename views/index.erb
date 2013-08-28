@@ -1,1 +1,6 @@
 <h1>Giant Pic</h1>
+<% @pictures.each do |p| %>
+  <p><%= p.title %></p>
+  <p><%= p.url %></p>
+  <p><%= p.caption %></p>
+<% end %>
