@@ -9,7 +9,7 @@ class Picture
   include DataMapper::Resource
 
   property :id,       Serial
-  property :url,      String
+  property :url,      Text
   property :title,    String
   property :caption,  Text
 end
@@ -23,15 +23,36 @@ get "/index" do
   erb :index
 end
 
-post "/index" do
-  @picture = Picture.create(params[:picture])
-  "Saved" unless @picture.nil?
+get "/image/:id" do
+  @picture = Picture.get(params[:id])
+  erb :show
 end
 
-get "/new" do
+post "/images" do
+  picture = Picture.create(params[:picture])
+  redirect :index
+end
+
+get "/images/new" do
   erb :new
 end
 
+get "/image/:id/edit" do
+  @picture = Picture.get(params[:id])
+  erb :edit
+end
+
+patch "/image/:id" do
+  pic = Picture.get(params[:id])
+  pic.update(params[:picture])
+  redirect :index
+end
+
+delete "/image/:id" do
+  pic = Picture.get(params[:id])
+  pic.destroy
+  redirect :index
+end
 
 DataMapper.finalize
 

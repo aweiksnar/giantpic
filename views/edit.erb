@@ -1,0 +1,28 @@
+<h1>Edit a picture</h1>
+
+<form action="/image/<%= @picture.id %>" method="post">
+  <input name="_method" type="hidden" value="patch" />
+
+  <label for="title">Title</label>
+  <input name="picture[title]" value=<%= @picture.title %> />
+
+  <br />
+
+  <label for="url">Url</label>
+  <input name="picture[url]" value=<%= @picture.url %> />
+
+  <br />
+
+  <label for="caption">Caption</label>
+  <input name="picture[caption]" value=<%= @picture.caption %> />
+
+  <br />
+
+  <input name="save_picture" type="submit" value="Edit Picture" />
+
+</form>
+
+<form action="/image/<%= @picture.id %>" method="post">
+  <input name="_method" type="hidden" value="delete" />
+  <input name="delete_picture" type="submit" value="Delete Picture" />
+</form>
