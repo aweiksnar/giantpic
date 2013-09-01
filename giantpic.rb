@@ -3,6 +3,7 @@ require 'sinatra/base'
 require 'sinatra/reloader' if development?
 require 'data_mapper'
 require 'dm-sqlite-adapter'
+require 'grape'
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/giantpic.db")
 
@@ -54,6 +55,22 @@ class Giantpic < Sinatra::Base
     pic = Picture.get(params[:id])
     pic.destroy
     redirect :index
+  end
+end
+
+class API < Grape::API
+  format :json
+
+  get :hello do
+    {hello: "world"}
+  end
+
+  get "/index/api" do
+    Picture.all
+  end
+
+  get "/image/:id/api" do
+    Picture.get(params[:id])
   end
 end
 
