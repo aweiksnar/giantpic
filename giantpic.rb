@@ -61,10 +61,6 @@ end
 class API < Grape::API
   format :json
 
-  get :hello do
-    {hello: "world"}
-  end
-
   get "/index/api" do
     Picture.all
   end
