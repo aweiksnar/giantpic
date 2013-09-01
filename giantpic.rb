@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/base'
 require 'sinatra/reloader' if development?
 require 'data_mapper'
 require 'dm-sqlite-adapter'
@@ -14,47 +15,50 @@ class Picture
   property :caption,  Text
 end
 
-get "/" do
-  redirect :index
-end
+class Giantpic < Sinatra::Base
+  get "/" do
+    redirect :index
+  end
 
-get "/index" do
-  @pictures = Picture.all
-  erb :index
-end
+  get "/index" do
+    @pictures = Picture.all
+    erb :index
+  end
 
-get "/image/:id" do
-  @picture = Picture.get(params[:id])
-  erb :show
-end
+  get "/image/:id" do
+    @picture = Picture.get(params[:id])
+    erb :show
+  end
 
-post "/images" do
-  picture = Picture.create(params[:picture])
-  redirect :index
-end
+  post "/images" do
+    picture = Picture.create(params[:picture])
+    redirect :index
+  end
 
-get "/images/new" do
-  erb :new
-end
+  get "/images/new" do
+    erb :new
+  end
 
-get "/image/:id/edit" do
-  @picture = Picture.get(params[:id])
-  erb :edit
-end
+  get "/image/:id/edit" do
+    @picture = Picture.get(params[:id])
+    erb :edit
+  end
 
-patch "/image/:id" do
-  pic = Picture.get(params[:id])
-  pic.update(params[:picture])
-  redirect :index
-end
+  patch "/image/:id" do
+    pic = Picture.get(params[:id])
+    pic.update(params[:picture])
+    redirect :index
+  end
 
-delete "/image/:id" do
-  pic = Picture.get(params[:id])
-  pic.destroy
-  redirect :index
+  delete "/image/:id" do
+    pic = Picture.get(params[:id])
+    pic.destroy
+    redirect :index
+  end
 end
 
 DataMapper.finalize
 
 Picture.auto_upgrade!
+
 
