@@ -1,5 +1,5 @@
 <div class="container">
-  <img src=<%= @picture.url %> alt="image" class="full_image" style="z-index: -1; position: absolute">
+  <img src=<%= @picture.url %> alt="image" class="full_image" id="edit_image" style="z-index: -1; position: absolute">
 
   <div class="form_container">
     <form action="/image/<%= @picture.id %>" method="post">

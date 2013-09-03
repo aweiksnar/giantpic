@@ -3,11 +3,14 @@
 <head>
   <meta charset="utf-8">
   <title>GiantPic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="<%= url('/application.css') %>">
 </head>
 <body>
   <div id="navigation">
-    <a href="/images/new">Add an Image</a>
+    <!-- <a href="/images/new">Add an Image</a> -->
+
+    <a href="/images/new" id="nav_add_pic">+</a>
     <a href="/index" id="nav_title">Giantpic</a>
   </div>
   <%= yield %>

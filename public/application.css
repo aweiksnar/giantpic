@@ -1,12 +1,11 @@
-/*browser reset*/
 * {
-  /*outline: 0;*/
-  /*padding: 0;*/
   margin: 0;
   font-family: georgia;
-  /*border: 0;*/
 }
-/*end browser reset*/
+
+@viewport {
+  width: device-width;
+}
 
 .container {
   padding-top: 45px;
@@ -77,8 +76,9 @@ text-decoration: none;
 
 a#nav_title {
   color: orange;
-  font-family: "Comic Sans MS";
+  font-family: georgia;
   font-size: 25px;
+  line-height: 35px;
 }
 
 a#nav_title:hover {
@@ -119,6 +119,12 @@ a#nav_title:hover {
   padding: 10px;
 }
 
+a#nav_add_pic {
+  font-size: 25px;
+  padding: 0px;
+  font-family: georgia;
+}
+
 /*buttons*/
 .primary_btn {
   color: orange;
@@ -143,5 +149,20 @@ a#nav_title:hover {
 }
 
 /*end buttons*/
+
+@media (max-width: 480px) {
+  .form_container {
+    width: 100%;
+    margin-top: 0px;
+  }
+
+  input, label, .primary_btn, .inverse_btn {
+    font-size: 20px;
+  }
+
+  #edit_image {
+    display: none;
+  }
+}
 
 
