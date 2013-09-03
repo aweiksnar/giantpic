@@ -14,13 +14,13 @@
       <label for="caption">Caption:</label>
       <input name="picture[caption]" value=<%= @picture.caption %> /><br />
 
-      <input name="save_picture" type="submit" value="Edit Picture" class="primary_btn" />
+      <input name="save_picture" type="submit" value="Edit Picture" class="inverse_btn" />
 
     </form>
 
     <form action="/image/<%= @picture.id %>" method="post">
       <input name="_method" type="hidden" value="delete" />
-      <input name="delete_picture" type="submit" value="Delete?" class="inverse_btn" />
+      <input name="delete_picture" type="submit" value="Delete?" class="primary_btn" />
     </form>
   </div>
 </div>

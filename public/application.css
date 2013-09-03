@@ -7,8 +7,13 @@
   width: device-width;
 }
 
+html, body {
+  height: 100%;
+}
+
 .container {
   padding-top: 45px;
+  height:100%;
 }
 
 a {
@@ -44,30 +49,28 @@ label {
 }
 
 #navigation {
-z-index: 100;
-position: fixed;
-top: 0;
-width: 100%;
-color: #ffffff;
-height: 35px;
-text-align: center;
-padding-top: 5px;
-padding-bottom: 5px;
-/* bottom shadow */
--webkit-box-shadow: 0px 0px 8px 0px #000000;
--moz-box-shadow: 0px 0px 8px 0px #000000;
-box-shadow: 0px 0px 8px 0px #000000;
-/* transparent background */
-background-color: rgba(1, 1, 1, 0.8);
-color: rgba(1, 1, 1, 0.8);
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: #ffffff;
+  height: 35px;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  -webkit-box-shadow: 0px 0px 8px 0px #000000;
+  -moz-box-shadow: 0px 0px 8px 0px #000000;
+  box-shadow: 0px 0px 8px 0px #000000;
+  background-color: rgba(1, 1, 1, 0.8);
+  color: rgba(1, 1, 1, 0.8);
 }
 
 #navigation a {
-font-size: 14px;
-padding-left: 15px;
-padding-right: 15px;
-color: lightgrey;
-text-decoration: none;
+  font-size: 14px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: lightgrey;
+  text-decoration: none;
 }
 
 #navigation a:hover {
@@ -99,7 +102,7 @@ a#nav_title:hover {
   left: 0;
   background-color: rgba(1, 1, 1, 0.6);
   color: lightgrey;
-  font-size: 25px;
+  font-size: 35px;
   padding: 2px;
 }
 
@@ -125,6 +128,14 @@ a#nav_add_pic {
   font-family: georgia;
 }
 
+.retina_wood {
+  background: url(retina_wood.png) repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 /*buttons*/
 .primary_btn {
   color: orange;
@@ -141,15 +152,15 @@ a#nav_add_pic {
   font-size: 30px;
   padding: 10px;
   border: 0;
-  background-color: rgba(255,165,0, 0.8) ;
+  background-color: rgba(255,165,0, 0.9) ;
 }
 
 .primary_btn:hover, .inverse_btn:hover {
   color: white;
 }
-
 /*end buttons*/
 
+/*mobile*/
 @media (max-width: 480px) {
   .form_container {
     width: 100%;
@@ -163,6 +174,10 @@ a#nav_add_pic {
   #edit_image {
     display: none;
   }
+
+  .image_caption {
+    font-size: 20px;
+    top: 0px;
+  }
 }
-
-
+/*end mobile*/

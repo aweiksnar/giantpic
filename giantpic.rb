@@ -1,5 +1,4 @@
 require 'sinatra'
-# require 'sinatra/base'
 require 'sinatra/reloader' if development?
 require 'data_mapper'
 require 'dm-sqlite-adapter'
