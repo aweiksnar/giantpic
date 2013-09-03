@@ -57,7 +57,6 @@ class Giantpic < Sinatra::Base
     redirect :index
   end
 
-
 end
 
 class API < Grape::API

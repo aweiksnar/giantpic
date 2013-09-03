@@ -3,6 +3,7 @@
   /*outline: 0;*/
   /*padding: 0;*/
   margin: 0;
+  font-family: georgia;
   /*border: 0;*/
 }
 /*end browser reset*/
@@ -13,6 +14,26 @@
 
 a {
   text-decoration: none;
+  color: lightgrey;
+}
+
+a:hover {
+  color: white;
+}
+
+input {
+  font-size: 30px;
+  margin: 10px;
+}
+
+label {
+  font-size: 30px;
+}
+
+.centered {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .full_image {
@@ -72,7 +93,7 @@ a#nav_title:hover {
   clear: both;
 }
 
-.index_image_caption {
+.image_caption {
   position: absolute;
   top: 50px;
   left: 0;
@@ -89,3 +110,38 @@ a#nav_title:hover {
 .image_link_caption:hover {
   color: white;
 }
+
+.form_container {
+  background-color: rgba(1, 1, 1, 0.8);
+  width: 480px;
+  color: lightgrey;
+  margin-top: 50px;
+  padding: 10px;
+}
+
+/*buttons*/
+.primary_btn {
+  color: orange;
+  border-radius: 0px;
+  font-size: 30px;
+  padding: 10px;
+  border: 0;
+  background-color: rgba(1, 1, 1, 0.8);
+}
+
+.inverse_btn {
+  color: rgba(1, 1, 1, 0.8);
+  border-radius: 0px;
+  font-size: 30px;
+  padding: 10px;
+  border: 0;
+  background-color: rgba(255,165,0, 0.8) ;
+}
+
+.primary_btn:hover, .inverse_btn:hover {
+  color: white;
+}
+
+/*end buttons*/
+
+
