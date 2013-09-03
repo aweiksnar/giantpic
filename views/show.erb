@@ -1,6 +1,11 @@
-<h1>Image</h1>
+<div class="container">
+  <div class="index_image">
 
-<a href=<%= @picture.url %>><%= @picture.title %></a>
-<p></p>
-<img src=<%= @picture.url %> alt="image">
-<p><%= @picture.caption %></p>
+    <img src=<%= @picture.url %> alt="image" class="full_image">
+
+    <a href=<%= @picture.url %>><%= @picture.title %></a>
+
+    <p><%= @picture.caption %></p>
+
+  </div>
+</div>

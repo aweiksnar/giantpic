@@ -1,7 +1,10 @@
-<h1>Giant Pic</h1>
-<% @pictures.each do |p| %>
-  <p><%= p.title %></p>
-  <a href="/image/<%= p.id %>"><%= p.url %></a>
-  <p><%= p.caption %></p>
-  <hr>
-<% end %>
+<div class="container">
+  <% @pictures.each do |p| %>
+
+    <div class="index_image">
+      <img src=<%= p.url %> alt="image" class="full_image">
+      <p class="index_image_caption"><a href="/image/<%= p.id %>" class="image_link_caption"><%= p.title %></a></p>
+    </div>
+
+  <% end %>
+</div>

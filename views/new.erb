@@ -1,22 +1,22 @@
-<h1>Add a picture</h1>
+<div class="container">
+  <h1>Add a picture</h1>
 
-<form action="/images" method="post">
+  <form action="/images" method="post">
+    <label for="title">Title</label>
+    <input name="picture[title]" />
 
-  <label for="title">Title</label>
-  <input name="picture[title]" />
+    <br />
 
-  <br />
+    <label for="url">Url</label>
+    <input name="picture[url]" />
 
-  <label for="url">Url</label>
-  <input name="picture[url]" />
+    <br />
 
-  <br />
+    <label for="caption">Caption</label>
+    <input name="picture[caption]" />
 
-  <label for="caption">Caption</label>
-  <input name="picture[caption]" />
+    <br />
 
-  <br />
-
-  <input name="save_picture" type="submit" value="Add Picture" />
-
-</form>
+    <input name="save_picture" type="submit" value="Add Picture" />
+  </form>
+</div>

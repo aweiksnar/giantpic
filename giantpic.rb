@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'sinatra/base'
+# require 'sinatra/base'
 require 'sinatra/reloader' if development?
 require 'data_mapper'
 require 'dm-sqlite-adapter'
@@ -24,6 +24,12 @@ class Giantpic < Sinatra::Base
   get "/index" do
     @pictures = Picture.all
     erb :index
+  end
+
+  delete "/image/:id" do
+    pic = Picture.get(params[:id])
+    pic.destroy
+    redirect :index
   end
 
   get "/image/:id" do
@@ -51,11 +57,7 @@ class Giantpic < Sinatra::Base
     redirect :index
   end
 
-  delete "/image/:id" do
-    pic = Picture.get(params[:id])
-    pic.destroy
-    redirect :index
-  end
+
 end
 
 class API < Grape::API
