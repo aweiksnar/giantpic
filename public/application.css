@@ -9,6 +9,11 @@
 
 html, body {
   height: 100%;
+  background: url(retina_wood.png) repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .container {
@@ -115,7 +120,7 @@ a#nav_title:hover {
 }
 
 #edit_image {
-  z-index: -1;
+  /*z-index: -1;*/
   position: absolute
 }
 
@@ -125,6 +130,7 @@ a#nav_title:hover {
   color: #D3D3D3;
   margin-top: 50px;
   padding: 10px;
+  position: relative;
 }
 
 a#nav_add_pic {

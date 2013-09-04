@@ -53,7 +53,7 @@ class Giantpic < Sinatra::Base
   patch "/image/:id" do
     pic = Picture.get(params[:id])
     pic.update(params[:picture])
-    redirect :index
+    redirect "/image/#{params[:id]}"
   end
 
 end
