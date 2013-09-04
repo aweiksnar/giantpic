@@ -1,7 +1,7 @@
 <div class="container">
   <% @pictures.each do |p| %>
     <div class="index_image">
-      <img src=<%= p.url %> alt="image" class="full_image">
+      <img src="<%= p.url %>" alt="image" class="full_image">
       <div class="image_caption">
         <a href="/image/<%= p.id %>" class="image_link_caption"><%= p.title %></a>
       </div>
