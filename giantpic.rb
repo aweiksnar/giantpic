@@ -25,20 +25,14 @@ class Giantpic < Sinatra::Base
     erb :index
   end
 
-  delete "/image/:id" do
-    pic = Picture.get(params[:id])
-    pic.destroy
-    redirect :index
-  end
-
   get "/image/:id" do
     @picture = Picture.get(params[:id])
     erb :show
   end
 
   post "/images" do
-    picture = Picture.create(params[:picture])
-    redirect :index
+    pic = Picture.create(params[:picture])
+    redirect "/image/#{pic.id}"
   end
 
   get "/images/new" do
@@ -53,9 +47,14 @@ class Giantpic < Sinatra::Base
   patch "/image/:id" do
     pic = Picture.get(params[:id])
     pic.update(params[:picture])
-    redirect "/image/#{params[:id]}"
+    redirect "/image/#{pic.id}"
   end
 
+  delete "/image/:id" do
+    pic = Picture.get(params[:id])
+    pic.destroy
+    redirect :index
+  end
 end
 
 class API < Grape::API
@@ -71,7 +70,4 @@ class API < Grape::API
 end
 
 DataMapper.finalize
-
 Picture.auto_upgrade!
-
-
