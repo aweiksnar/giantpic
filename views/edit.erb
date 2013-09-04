@@ -1,5 +1,5 @@
 <div class="container">
-  <img src=<%= @picture.url %> alt="image" class="full_image" id="edit_image">
+  <img src="<%= @picture.url %>" alt="image" class="full_image" id="edit_image">
   <div class="form_container">
     <form action="/image/<%= @picture.id %>" method="post">
       <input name="_method" type="hidden" value="patch" />
