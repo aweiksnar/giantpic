@@ -10,9 +10,9 @@ class Picture
   include DataMapper::Resource
 
   property :id,       Serial
-  property :url,      Text
-  property :title,    String
-  property :caption,  Text
+  property :url,      String, :length => 2000
+  property :title,    String, :length => 50
+  property :caption,  String, :length => 255
 end
 
 class Giantpic < Sinatra::Base

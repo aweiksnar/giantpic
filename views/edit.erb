@@ -1,21 +1,19 @@
 <div class="container">
-  <img src=<%= @picture.url %> alt="image" class="full_image" id="edit_image" style="z-index: -1; position: absolute">
-
+  <img src=<%= @picture.url %> alt="image" class="full_image" id="edit_image">
   <div class="form_container">
     <form action="/image/<%= @picture.id %>" method="post">
       <input name="_method" type="hidden" value="patch" />
 
       <label for="title">Title:</label>
-      <input name="picture[title]" value=<%= @picture.title %> /><br />
+      <input name="picture[title]" value="<%= @picture.title %>" /><br />
 
       <label for="url">Url:</label>
-      <input name="picture[url]" value=<%= @picture.url %> /><br />
+      <input name="picture[url]" value="<%= @picture.url %>" /><br />
 
       <label for="caption">Caption:</label>
-      <input name="picture[caption]" value=<%= @picture.caption %> /><br />
+      <input name="picture[caption]" value="<%= @picture.caption %>" /><br />
 
       <input name="save_picture" type="submit" value="Edit Picture" class="inverse_btn" />
-
     </form>
 
     <form action="/image/<%= @picture.id %>" method="post">

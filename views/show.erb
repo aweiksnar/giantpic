@@ -2,9 +2,11 @@
   <div class="index_image">
     <img src=<%= @picture.url %> alt="image" class="full_image">
     <div class="image_caption">
-      <a href=<%= @picture.url %>><%= @picture.title %>:</a>
-      <p><%= @picture.caption %></p>
-      <a href="/image/<%= @picture.id %>/edit">[Edit]</a>
+      <a href=<%= @picture.url %>>
+        <p><%= @picture.title %>:</p>
+        <p><%= @picture.caption %></p>
+      </a>
+      <a href="/image/<%= @picture.id %>/edit">[Edit]</a><br />
     </div>
   </div>
 </div>

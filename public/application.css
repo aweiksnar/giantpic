@@ -18,7 +18,7 @@ html, body {
 
 a {
   text-decoration: none;
-  color: lightgrey;
+  color: #D3D3D3;
 }
 
 a:hover {
@@ -69,7 +69,7 @@ label {
   font-size: 14px;
   padding-left: 15px;
   padding-right: 15px;
-  color: lightgrey;
+  color: #D3D3D3;
   text-decoration: none;
 }
 
@@ -101,23 +101,28 @@ a#nav_title:hover {
   top: 50px;
   left: 0;
   background-color: rgba(1, 1, 1, 0.6);
-  color: lightgrey;
+  color: #D3D3D3;
   font-size: 35px;
   padding: 2px;
 }
 
 .image_link_caption {
-  color: lightgrey;
+  color: #D3D3D3;
 }
 
 .image_link_caption:hover {
   color: white;
 }
 
+#edit_image {
+  z-index: -1;
+  position: absolute
+}
+
 .form_container {
   background-color: rgba(1, 1, 1, 0.8);
   width: 480px;
-  color: lightgrey;
+  color: #D3D3D3;
   margin-top: 50px;
   padding: 10px;
 }
