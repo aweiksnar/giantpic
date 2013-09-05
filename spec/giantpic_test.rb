@@ -24,6 +24,24 @@ class GiantpicTest < Test::Unit::TestCase
 
     assert last_response.ok?
   end
+
+  def test_it_has_a_new_image_page
+    get "/images/new"
+
+    assert last_response.ok?
+  end
+
+  def test_it_has_an_image_show_page
+    get "/image/2"
+
+    assert last_response.ok?
+  end
+
+  def test_it_has_an_image_edit_page
+    get "/image/2/edit"
+
+    assert last_response.ok?
+  end
 end
 
 class PictureTest < Test::Unit::TestCase
