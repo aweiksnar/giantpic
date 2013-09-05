@@ -24,6 +24,24 @@ describe "The Giantpic App" do
 
     expect(last_response).to be_ok
   end
+
+  it "should have a new image page" do
+    get "/images/new"
+
+    expect(last_response).to be_ok
+  end
+
+  it "should have an image show page" do
+    get "/image/2"
+
+    expect(last_response).to be_ok
+  end
+
+  it "should have an image edit page" do
+    get "/image/2/edit"
+
+    expect(last_response).to be_ok
+  end
 end
 
 describe "Picture" do
