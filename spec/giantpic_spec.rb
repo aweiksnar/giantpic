@@ -43,7 +43,6 @@ describe "The Giantpic App" do
     expect(last_response).to be_ok
   end
 
-
   describe "A user" do
 
     it "should exist when created" do
@@ -80,34 +79,36 @@ describe "The Giantpic App" do
     end
   end
 
+  describe "A Picture" do
+
+    it "should exist when created" do
+      pic = Picture.new
+
+      expect(pic).not_to be_nil
+    end
+
+    it "should respond to defined attributes" do
+      pic = Picture.new
+
+      expect(pic).to respond_to(:id)
+      expect(pic).to respond_to(:url)
+      expect(pic).to respond_to(:title)
+      expect(pic).to respond_to(:caption)
+    end
+
+    it "can be created with attributes" do
+      pic = Picture.new(:id => 1, :url => "http://www.example.com", :title => "Test Title", :caption => "Test Caption")
+
+      expect(pic.id).to eq(1)
+      expect(pic.url).to eq("http://www.example.com")
+      expect(pic.title).to eq("Test Title")
+      expect(pic.caption).to eq("Test Caption")
+    end
+  end
+
 end
 
-describe "Picture" do
 
-  it "should exist when created" do
-    pic = Picture.new
-
-    expect(pic).not_to be_nil
-  end
-
-  it "should respond to defined attributes" do
-    pic = Picture.new
-
-    expect(pic).to respond_to(:id)
-    expect(pic).to respond_to(:url)
-    expect(pic).to respond_to(:title)
-    expect(pic).to respond_to(:caption)
-  end
-
-  it "can be created with attributes" do
-    pic = Picture.new(:id => 1, :url => "http://www.example.com", :title => "Test Title", :caption => "Test Caption")
-
-    expect(pic.id).to eq(1)
-    expect(pic.url).to eq("http://www.example.com")
-    expect(pic.title).to eq("Test Title")
-    expect(pic.caption).to eq("Test Caption")
-  end
-end
 
 
 
