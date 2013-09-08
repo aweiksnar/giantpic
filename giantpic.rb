@@ -15,6 +15,14 @@ class Picture
   property :caption,  String, :length => 255
 end
 
+class User
+  include DataMapper::Resource
+
+  property :id,       Serial
+  property :email,    String
+  property :password, String
+end
+
 class Giantpic < Sinatra::Base
   get "/" do
     redirect :index
@@ -54,6 +62,18 @@ class Giantpic < Sinatra::Base
     pic = Picture.get(params[:id])
     pic.destroy
     redirect :index
+  end
+
+  get "/sign_up" do
+    erb :sign_up
+  end
+
+  get "/sign_in" do
+    erb :sign_in
+  end
+
+  get "/user/:id" do
+    erb :profile
   end
 end
 

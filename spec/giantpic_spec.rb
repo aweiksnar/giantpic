@@ -42,6 +42,44 @@ describe "The Giantpic App" do
 
     expect(last_response).to be_ok
   end
+
+
+  describe "A user" do
+
+    it "should exist when created" do
+      user = User.new
+
+      expect(user).not_to be_nil
+    end
+
+    it "should respond to defined attributes" do
+      user = User.new
+
+      expect(user).to respond_to(:id)
+      expect(user).to respond_to(:email)
+      expect(user).to respond_to(:password)
+    end
+
+    it "should have a sign up page" do
+      get "/sign_up"
+
+      expect(last_response).to be_ok
+    end
+
+    it "should have a sign in page" do
+      get "/sign_in"
+
+      expect(last_response).to be_ok
+    end
+
+    it "should have a profile page" do
+      user = User.new(:id => 1)
+      get "/user/1"
+
+      expect(last_response).to be_ok
+    end
+  end
+
 end
 
 describe "Picture" do
@@ -69,5 +107,7 @@ describe "Picture" do
     expect(pic.title).to eq("Test Title")
     expect(pic.caption).to eq("Test Caption")
   end
-
 end
+
+
+
