@@ -3,6 +3,7 @@ ENV['RACK_ENV'] = 'test'
 require "./giantpic"
 require "rspec"
 require "rack/test"
+require "spec_helper.rb"
 
 describe "The Giantpic App" do
   include Rack::Test::Methods
