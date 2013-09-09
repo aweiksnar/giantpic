@@ -1,9 +1,9 @@
 ENV['RACK_ENV'] = 'test'
 
-require "./giantpic"
+require "./giantpic.rb"
 require "rspec"
 require "rack/test"
-require "spec_helper.rb"
+require "spec_helper"
 
 describe "The Giantpic App" do
   include Rack::Test::Methods
@@ -73,11 +73,18 @@ describe "The Giantpic App" do
     end
 
     it "should have a profile page" do
-      user = User.new(:id => 1)
+      user = User.new
       get "/user/1"
 
       expect(last_response).to be_ok
     end
+
+    it "should respond to pictures (as per has many)" do
+      user = User.new
+
+      expect(user).to respond_to(:pictures)
+    end
+
   end
 
   describe "A Picture" do
@@ -105,11 +112,19 @@ describe "The Giantpic App" do
       expect(pic.title).to eq("Test Title")
       expect(pic.caption).to eq("Test Caption")
     end
+
+    it "should be connected to a user through a user_id attribute" do
+      user =  User.new(:id => 1)
+      photo = Picture.new(:user_id => 1)
+
+      expect(photo.user_id).to eq(user.id)
+    end
+
+    it "should respond to user (as per belongs to)" do
+      picture = Picture.new
+
+      expect(picture).to respond_to(:user)
+    end
   end
 
 end
-
-
-
-
-

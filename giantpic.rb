@@ -13,6 +13,9 @@ class Picture
   property :url,      String, :length => 2000
   property :title,    String, :length => 50
   property :caption,  String, :length => 255
+  property :user_id,  Integer
+
+  belongs_to :user
 end
 
 class User
@@ -21,6 +24,8 @@ class User
   property :id,       Serial
   property :email,    String
   property :password, String
+
+  has n, :pictures
 end
 
 class Giantpic < Sinatra::Base
@@ -91,3 +96,4 @@ end
 
 DataMapper.finalize
 Picture.auto_upgrade!
+User.auto_upgrade!
