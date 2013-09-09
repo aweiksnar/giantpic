@@ -44,7 +44,26 @@ describe "The Giantpic App" do
     expect(last_response).to be_ok
   end
 
-  describe "A user" do
+  it "should have a sign up page" do
+    get "/sign_up"
+
+    expect(last_response).to be_ok
+  end
+
+  it "should have a sign in page" do
+    get "/sign_in"
+
+    expect(last_response).to be_ok
+  end
+
+  it "should have a profile page" do
+    user = User.new
+    get "/user/1"
+
+    expect(last_response).to be_ok
+  end
+
+  describe "users" do
 
     it "should exist when created" do
       user = User.new
@@ -60,24 +79,7 @@ describe "The Giantpic App" do
       expect(user).to respond_to(:password)
     end
 
-    it "should have a sign up page" do
-      get "/sign_up"
 
-      expect(last_response).to be_ok
-    end
-
-    it "should have a sign in page" do
-      get "/sign_in"
-
-      expect(last_response).to be_ok
-    end
-
-    it "should have a profile page" do
-      user = User.new
-      get "/user/1"
-
-      expect(last_response).to be_ok
-    end
 
     it "should respond to pictures (as per has many)" do
       user = User.new

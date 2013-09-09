@@ -73,6 +73,11 @@ class Giantpic < Sinatra::Base
     erb :sign_up
   end
 
+  post "/sign_up" do
+    user = User.create(params[:user])
+    redirect :index
+  end
+
   get "/sign_in" do
     erb :sign_in
   end
