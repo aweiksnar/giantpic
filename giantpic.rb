@@ -22,13 +22,14 @@ class User
   include DataMapper::Resource
 
   property :id,       Serial
-  property :email,    String
-  property :password, String
+  property :email,    String, :required => true
+  property :password, String, :required => true
 
   has n, :pictures
 end
 
 class Giantpic < Sinatra::Base
+
   get "/" do
     redirect :index
   end
@@ -82,7 +83,23 @@ class Giantpic < Sinatra::Base
     erb :sign_in
   end
 
+  post "/session/new" do
+    user = User.first(:email => params[:user][:email])
+    if user.present? && user.password == params[:user][:password]
+      session[:user_id] = user.id
+      redirect :index
+    else
+      "Please try again"
+    end
+  end
+
+  delete "/sign_out" do
+    session.clear
+    redirect :index
+  end
+
   get "/user/:id" do
+    @user = User.get(params[:id])
     erb :profile
   end
 end
