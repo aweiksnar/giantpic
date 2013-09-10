@@ -7,11 +7,6 @@
   width: device-width;
 }
 
-.nav_user_controls {
-  float: right;
-  vertical-align: center;
-}
-
 html, body {
   height: 100%;
   background: url(retina_wood.png) repeat center center fixed;
