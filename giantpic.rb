@@ -1,5 +1,5 @@
-require 'sinatra'
-require 'sinatra/reloader' if development?
+require 'sinatra/base'
+require 'sinatra/reloader'
 require 'data_mapper'
 require 'dm-sqlite-adapter'
 require 'grape'
@@ -29,6 +29,10 @@ class User
 end
 
 class Giantpic < Sinatra::Base
+
+  configure :development do
+    register Sinatra::Reloader
+  end
 
   get "/" do
     redirect :index
