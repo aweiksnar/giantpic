@@ -42,6 +42,43 @@ class GiantpicTest < Test::Unit::TestCase
 
     assert last_response.ok?
   end
+
+  def test_it_has_a_sign_up_page
+    get "/sign_up"
+
+    assert last_response.ok?
+  end
+
+  def test_it_has_a_sign_in_page
+    get "/sign_in"
+
+    assert last_response.ok?
+  end
+
+  def test_it_has_a_profile_page
+    get "/user/1"
+
+    assert last_response.ok?
+  end
+end
+
+class UserTest < Test::Unit::TestCase
+
+  def test_it_should_exist_when_created
+    user = User.new
+
+    assert_not_nil user
+  end
+
+  def test_it_should_respond_to_defined_attributes
+    user = User.new
+
+    assert_respond_to user, :id
+    assert_respond_to user, :email
+    assert_respond_to user, :password
+    assert_respond_to user, :pictures
+  end
+
 end
 
 class PictureTest < Test::Unit::TestCase
@@ -59,6 +96,7 @@ class PictureTest < Test::Unit::TestCase
     assert_respond_to pic, :url
     assert_respond_to pic, :title
     assert_respond_to pic, :caption
+    assert_respond_to pic, :user
   end
 
   def test_it_can_be_created_with_attributes

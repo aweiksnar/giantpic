@@ -79,8 +79,6 @@ describe "The Giantpic App" do
       expect(user).to respond_to(:password)
     end
 
-
-
     it "should respond to pictures (as per has many)" do
       user = User.new
 
