@@ -42,6 +42,12 @@ class Giantpic < Sinatra::Base
     session[:user_id].present?
   end
 
+  def validate_picture_belongs_to_current_user
+    unless signed_in? && Picture.first(:id => params[:id]).user_id == current_user.id
+      redirect :index
+    end
+  end
+
   get "/" do
     redirect :index
   end
@@ -71,12 +77,14 @@ class Giantpic < Sinatra::Base
   end
 
   patch "/image/:id" do
+    validate_picture_belongs_to_current_user
     pic = Picture.get(params[:id])
     pic.update(params[:picture])
     redirect "/image/#{pic.id}"
   end
 
   delete "/image/:id" do
+    validate_picture_belongs_to_current_user
     pic = Picture.get(params[:id])
     pic.destroy
     redirect :index

@@ -68,6 +68,10 @@ class GiantpicTest < Test::Unit::TestCase
   def test_it_has_current_user_instance_method
     assert_respond_to app, :current_user
   end
+
+  def test_it_has_a_validate_picture_belongs_to_current_user_method
+    assert_respond_to app, :validate_picture_belongs_to_current_user
+  end
 end
 
 class UserTest < Test::Unit::TestCase
