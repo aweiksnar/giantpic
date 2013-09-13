@@ -34,6 +34,14 @@ class Giantpic < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  def current_user
+    @current_user ||= User.first(:id => session[:user_id])
+  end
+
+  def signed_in?
+    session[:user_id].present?
+  end
+
   get "/" do
     redirect :index
   end

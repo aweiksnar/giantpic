@@ -8,7 +8,7 @@ class GiantpicTest < Test::Unit::TestCase
   include Rack::Test::Methods
 
   def app
-    Giantpic
+    Giantpic.new!
   end
 
   def test_it_should_redirect_to_index_page_as_root_path
@@ -59,6 +59,14 @@ class GiantpicTest < Test::Unit::TestCase
     get "/user/1"
 
     assert last_response.ok?
+  end
+
+  def test_it_has_signed_in_instance_method
+    assert_respond_to app, :signed_in?
+  end
+
+  def test_it_has_current_user_instance_method
+    assert_respond_to app, :current_user
   end
 end
 

@@ -9,7 +9,7 @@ describe "The Giantpic App" do
   include Rack::Test::Methods
 
   def app
-    Giantpic
+    Giantpic.new!
   end
 
   it "should redirect to the index page as the root url" do
@@ -63,7 +63,7 @@ describe "The Giantpic App" do
     expect(last_response).to be_ok
   end
 
-  describe "users" do
+  describe "User" do
 
     it "should exist when created" do
       user = User.new
@@ -84,7 +84,6 @@ describe "The Giantpic App" do
 
       expect(user).to respond_to(:pictures)
     end
-
   end
 
   describe "A Picture" do
@@ -124,6 +123,16 @@ describe "The Giantpic App" do
       picture = Picture.new
 
       expect(picture).to respond_to(:user)
+    end
+  end
+
+  describe "Instance Methods" do
+    it "should have a current_user defined" do
+      expect(app).to respond_to(:current_user)
+    end
+
+    it "should have a signed_in? method" do
+      expect(app).to respond_to(:signed_in?)
     end
   end
 
