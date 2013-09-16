@@ -133,6 +133,11 @@ a#nav_title:hover {
   position: relative;
 }
 
+.error {
+  background-color: rgba(180, 1, 1, 0.8);
+  font-size: 35px;
+}
+
 a#nav_add_pic {
   font-size: 25px;
   padding: 0px;

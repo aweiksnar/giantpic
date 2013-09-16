@@ -63,6 +63,12 @@ describe "The Giantpic App" do
     expect(last_response).to be_ok
   end
 
+  it "should have an error page" do
+    get "/error"
+
+    expect(last_response).to be_ok
+  end
+
   describe "User" do
 
     it "should exist when created" do

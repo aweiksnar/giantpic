@@ -125,6 +125,10 @@ class Giantpic < Sinatra::Base
     @user = User.get(params[:id])
     erb :profile
   end
+
+  get "/error" do
+    erb :error
+  end
 end
 
 class API < Grape::API
