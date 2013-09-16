@@ -80,10 +80,14 @@ class Giantpic < Sinatra::Base
   end
 
   patch "/image/:id" do
-    validate_picture_belongs_to_current_user
+    # validate_picture_belongs_to_current_user
     pic = Picture.get(params[:id])
-    pic.update(params[:picture])
-    redirect "/image/#{pic.id}"
+    if pic.update(params[:picture])
+      redirect "/image/#{pic.id}"
+    else
+      @errors = pic.errors.full_messages
+      erb :error
+    end
   end
 
   delete "/image/:id" do
