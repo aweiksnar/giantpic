@@ -130,6 +130,12 @@ describe "The Giantpic App" do
 
       expect(picture).to respond_to(:user)
     end
+
+    it "should not be able to be saved unless it belongs to a user" do
+      pic = Picture.new(:id => 1, :url => "http://www.example.com", :title => "Test Title", :caption => "Test Caption")
+
+      expect(pic.save).to eq(false)
+    end
   end
 
   describe "Instance Methods" do

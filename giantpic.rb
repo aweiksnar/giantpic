@@ -14,7 +14,7 @@ class Picture
   property :url,      String, :format => :url, :length => 2000, :required => true
   property :title,    String, :length => 50, :required => true
   property :caption,  String, :length => 255
-  property :user_id,  Integer
+  property :user_id,  Integer, :required => true
 
   belongs_to :user
 end
