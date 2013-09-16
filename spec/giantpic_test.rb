@@ -61,6 +61,12 @@ class GiantpicTest < Test::Unit::TestCase
     assert last_response.ok?
   end
 
+  def test_is_has_an_error_page
+    get "/error"
+
+    assert last_response.ok?
+  end
+
   def test_it_has_signed_in_instance_method
     assert_respond_to app, :signed_in?
   end
@@ -111,6 +117,13 @@ class PictureTest < Test::Unit::TestCase
     assert_respond_to pic, :user
   end
 
+  def test_it_should_be_connected_to_a_user_through_a_user_id_attribute
+    user =  User.new(:id => 1)
+    photo = Picture.new(:user_id => 1)
+
+    assert_equal photo.user_id, user.id
+  end
+
   def test_it_can_be_created_with_attributes
     pic = Picture.new(:id => 1, :url => "http://www.example.com", :title => "Test Title", :caption => "Test Caption")
 
@@ -118,6 +131,12 @@ class PictureTest < Test::Unit::TestCase
     assert_equal pic.url, "http://www.example.com"
     assert_equal pic.title, "Test Title"
     assert_equal pic.caption, "Test Caption"
+  end
+
+  def test_it_cant_be_saved_unless_it_belongs_to_a_user
+    pic = Picture.new(:id => 1, :url => "http://www.example.com", :title => "Test Title", :caption => "Test Caption")
+
+    assert_equal pic.save, false
   end
 
 end
