@@ -135,7 +135,7 @@ describe "The Giantpic App" do
       expect(app).to respond_to(:signed_in?)
     end
 
-    it "should have an validate_picture_belongs_to_current_user method" do
+    it "should have a validate_picture_belongs_to_current_user method" do
       expect(app).to respond_to(:validate_picture_belongs_to_current_user)
     end
   end

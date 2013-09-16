@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require 'data_mapper'
 require 'dm-sqlite-adapter'
 require 'grape'
+require 'sinatra/flash'
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/giantpic.db")
 
@@ -33,6 +34,8 @@ class Giantpic < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
   end
+
+  register Sinatra::Flash
 
   def current_user
     @current_user ||= User.first(:id => session[:user_id])
