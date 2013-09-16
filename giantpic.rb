@@ -67,8 +67,13 @@ class Giantpic < Sinatra::Base
   end
 
   post "/images" do
-    pic = Picture.create(params[:picture])
-    redirect "/image/#{pic.id}"
+    pic = Picture.new(params[:picture])
+    if pic.save
+      redirect "/image/#{pic.id}"
+    else
+      @errors = pic.errors.full_messages
+      erb :error
+    end
   end
 
   get "/images/new" do
