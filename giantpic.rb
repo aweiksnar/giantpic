@@ -23,7 +23,7 @@ class User
   include DataMapper::Resource
 
   property :id,       Serial
-  property :email,    String, :required => true
+  property :email,    String, :required => true, :unique => true
   property :password, String, :required => true
 
   has n, :pictures
@@ -98,8 +98,13 @@ class Giantpic < Sinatra::Base
   end
 
   post "/sign_up" do
-    user = User.create(params[:user])
-    redirect :index
+    user = User.new(params[:user])
+    if user.save
+      redirect :index
+    else
+      @errors = user.errors.full_messages
+      erb :error
+    end
   end
 
   get "/sign_in" do
