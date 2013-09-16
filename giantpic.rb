@@ -47,7 +47,8 @@ class Giantpic < Sinatra::Base
 
   def validate_picture_belongs_to_current_user
     unless signed_in? && Picture.first(:id => params[:id]).user_id == current_user.id
-      redirect :index
+      flash[:errors] = ["Only the image owner can perform this action"]
+      redirect :error
     end
   end
 
@@ -80,7 +81,7 @@ class Giantpic < Sinatra::Base
   end
 
   patch "/image/:id" do
-    # validate_picture_belongs_to_current_user
+    validate_picture_belongs_to_current_user
     pic = Picture.get(params[:id])
     if pic.update(params[:picture])
       redirect "/image/#{pic.id}"
