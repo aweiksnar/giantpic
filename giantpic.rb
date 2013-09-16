@@ -112,7 +112,8 @@ class Giantpic < Sinatra::Base
       session[:user_id] = user.id
       redirect :index
     else
-      "Please try again"
+      flash[:errors] = ["Invalid username or password"]
+      redirect :error
     end
   end
 
@@ -127,6 +128,7 @@ class Giantpic < Sinatra::Base
   end
 
   get "/error" do
+    @errors = flash[:errors]
     erb :error
   end
 end
