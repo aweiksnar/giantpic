@@ -11,8 +11,8 @@ class Picture
   include DataMapper::Resource
 
   property :id,       Serial
-  property :url,      String, :length => 2000
-  property :title,    String, :length => 50
+  property :url,      String, :format => :url, :length => 2000, :required => true
+  property :title,    String, :length => 50, :required => true
   property :caption,  String, :length => 255
   property :user_id,  Integer
 
@@ -23,7 +23,7 @@ class User
   include DataMapper::Resource
 
   property :id,       Serial
-  property :email,    String, :required => true, :unique => true
+  property :email,    String, :format => :email_address, :required => true, :unique => true
   property :password, String, :required => true
 
   has n, :pictures
