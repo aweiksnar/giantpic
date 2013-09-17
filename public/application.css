@@ -94,8 +94,8 @@ form.icons {
 
 #sign_out_button {
   text-decoration: none;
+  padding: 0px;
   font-size: 14px;
-  margin: none;
   color: #D3D3D3;
   border: none;
   background: none;
