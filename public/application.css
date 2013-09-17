@@ -72,8 +72,6 @@ label {
 
 #navigation a {
   font-size: 14px;
-  padding-left: 15px;
-  padding-right: 15px;
   color: #D3D3D3;
   text-decoration: none;
 }
@@ -90,6 +88,11 @@ label {
 
 form.icons {
   padding: 0px;
+}
+
+#add_icon {
+  padding: 10px;
+  vertical-align: center;
 }
 
 #sign_out_button {
@@ -118,13 +121,6 @@ a#nav_title:hover {
   color: orange;
   text-decoration: overline;
 }
-
-a#nav_add_pic {
-  font-size: 25px;
-  padding: 0px;
-  font-family: georgia;
-}
-
 
 .index_image {
   position: relative;
