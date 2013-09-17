@@ -139,7 +139,8 @@ class Giantpic < Sinatra::Base
 
   get "/user/:id" do
     @user = User.get(params[:id])
-    erb :profile
+    @pictures = Picture.all(:user_id => params[:id])
+    erb :index
   end
 
   get "/error" do
