@@ -8,7 +8,12 @@
 </head>
 <body>
   <div id="navigation">
+    <% if signed_in? %>
     <a href="/images/new" id="nav_add_pic">+</a>
+    <% else %>
+    <a href="/sign_up" id="nav_add_pic">+</a>
+    <% end %>
+
     <a href="/index" id="nav_title">Giantpic</a>
   </div>
   <%= yield %>
