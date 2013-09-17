@@ -24,7 +24,7 @@ class User
 
   property :id,       Serial
   property :email,    String, :format => :email_address, :required => true, :unique => true
-  property :password, String, :required => true
+  property :password, BCryptHash, :required => true
 
   has n, :pictures
 end
