@@ -9,12 +9,20 @@
 <body>
   <div id="navigation">
     <% if signed_in? %>
-    <a href="/images/new" id="nav_add_pic">+</a>
+      <a href="/images/new" id="nav_add_pic">+</a>
     <% else %>
-    <a href="/sign_up" id="nav_add_pic">+</a>
+      <a href="/sign_up" id="nav_add_pic">+</a>
     <% end %>
+      <a href="/index" id="nav_title">Giantpic</a>
 
-    <a href="/index" id="nav_title">Giantpic</a>
+    <% if signed_in? %>
+      <form action="/sign_out" method="post" class="icons">
+        <input name="_method" type="hidden" value="delete" />
+        <input name="sign_out" type="submit" value="sign out" id="sign_out_button" />
+      </form>
+    <% else %>
+      <a href="/sign_in" class="icons">sign in</a>
+    <% end %>
   </div>
   <%= yield %>
 </body>

@@ -82,6 +82,31 @@ label {
   color: white;
 }
 
+.icons {
+  float: right;
+  right: 30px;
+  padding: 10px;
+}
+
+form.icons {
+  padding: 0px;
+}
+
+#sign_out_button {
+  text-decoration: none;
+  font-size: 14px;
+  margin: none;
+  color: #D3D3D3;
+  border: none;
+  background: none;
+  position: relative;
+}
+
+#sign_out_button:hover {
+  color: white;
+  cursor: pointer;
+}
+
 a#nav_title {
   color: orange;
   font-family: georgia;
@@ -93,6 +118,13 @@ a#nav_title:hover {
   color: orange;
   text-decoration: overline;
 }
+
+a#nav_add_pic {
+  font-size: 25px;
+  padding: 0px;
+  font-family: georgia;
+}
+
 
 .index_image {
   position: relative;
@@ -138,11 +170,6 @@ a#nav_title:hover {
   font-size: 35px;
 }
 
-a#nav_add_pic {
-  font-size: 25px;
-  padding: 0px;
-  font-family: georgia;
-}
 
 .retina_wood {
   background: url(retina_wood.png) repeat center center fixed;
