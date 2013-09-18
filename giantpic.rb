@@ -140,7 +140,7 @@ class Giantpic < Sinatra::Base
 
   get "/user/:id" do
     @user = User.get(params[:id])
-    @pictures = Picture.all(:user_id => params[:id])
+    @pictures = Picture.all(:user_id => params[:id], :limit => 10, :order => [ :id.desc ])
     erb :index
   end
 
