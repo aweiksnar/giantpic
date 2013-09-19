@@ -17,6 +17,10 @@ class Picture
   property :user_id,  Integer, :required => true
 
   belongs_to :user
+
+  def was_submitted_by(current_user)
+    self.user_id == current_user.id
+  end
 end
 
 class User

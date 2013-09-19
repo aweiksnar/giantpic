@@ -6,7 +6,9 @@
         <p><%= @picture.title %>:</p>
         <p><%= @picture.caption %></p>
       </a>
-      <a href="/image/<%= @picture.id %>/edit">[Edit]</a><br />
+      <% if signed_in? && @picture.was_submitted_by(current_user) %>
+        <a href="/image/<%= @picture.id %>/edit">[Edit]</a><br />
+      <% end %>
     </div>
   </div>
 </div>

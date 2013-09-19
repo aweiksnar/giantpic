@@ -144,6 +144,14 @@ describe "The Giantpic App" do
 
       expect(pic.save).to eq(false)
     end
+
+    it "should have a was_submitted_by(current_user) method" do
+      pic = Picture.new(:user_id => 1)
+      user = User.new(:id => 1)
+
+      expect(pic).to respond_to(:was_submitted_by)
+      expect(pic.was_submitted_by(user)).to eq(true)
+    end
   end
 
   describe "Instance Methods" do

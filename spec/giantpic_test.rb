@@ -97,6 +97,14 @@ class UserTest < Test::Unit::TestCase
     assert_respond_to user, :pictures
   end
 
+  def test_user_should_have_a_password_between_five_and_twenty_characters
+    user =  User.new(:id => 1, :email => "test@example.com", :password => "hi")
+    user2 = User.new(:id => 2, :email => "fake@example.com", :password => "iamaverylongpasswordthatwontwork")
+
+    assert_equal user.save, false
+    assert_equal user2.save, false
+  end
+
 end
 
 class PictureTest < Test::Unit::TestCase
@@ -137,6 +145,14 @@ class PictureTest < Test::Unit::TestCase
     pic = Picture.new(:id => 1, :url => "http://www.example.com", :title => "Test Title", :caption => "Test Caption")
 
     assert_equal pic.save, false
+  end
+
+  def test_it_has_a_was_submitted_by_method
+    pic = Picture.new(:user_id => 1)
+    user = User.new(:id => 1)
+
+    assert_respond_to pic, :was_submitted_by
+    assert_equal pic.was_submitted_by(user), true
   end
 
 end
