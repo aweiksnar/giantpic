@@ -5,7 +5,7 @@ require 'data_mapper'
 require 'dm-sqlite-adapter'
 require 'grape'
 
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/giantpic.db")
+DataMapper::setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/giantpic.db")
 
 class Picture
   include DataMapper::Resource
