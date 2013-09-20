@@ -84,6 +84,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.0)
     multi_xml (0.5.5)
+    pg (0.16.0)
     rack (1.5.2)
     rack-accept (0.4.5)
       rack (>= 0.4)
@@ -126,6 +127,7 @@ DEPENDENCIES
   dm-postgres-adapter
   dm-sqlite-adapter
   grape
+  pg
   sinatra (= 1.4.3)
   sinatra-flash
   sinatra-reloader
