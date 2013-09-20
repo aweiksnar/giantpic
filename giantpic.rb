@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 require 'sinatra/flash'
 require 'data_mapper'
+require 'dm-sqlite-adapter'
 require 'dm-postgres-adapter'
 require 'grape'
 
