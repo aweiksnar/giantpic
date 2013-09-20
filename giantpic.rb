@@ -2,8 +2,6 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 require 'sinatra/flash'
 require 'data_mapper'
-require 'dm-sqlite-adapter'
-require 'dm-postgres-adapter'
 require 'grape'
 
 DataMapper::setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/giantpic.db")
@@ -38,6 +36,11 @@ class Giantpic < Sinatra::Base
 
   configure :development do
     register Sinatra::Reloader
+    require "dm-sqlite-adapter"
+  end
+
+  configure :production do
+    require "dm-postgres-adapter"
   end
 
   register Sinatra::Flash
