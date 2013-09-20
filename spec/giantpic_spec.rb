@@ -91,12 +91,10 @@ describe "The Giantpic App" do
       expect(user).to respond_to(:pictures)
     end
 
-    it "should have a password between five and twenty characters" do
-      user =  User.new(:id => 1, :email => "test@example.com", :password => "hi")
-      user2 = User.new(:id => 2, :email => "fake@example.com", :password => "iamaverylongpasswordthatwontwork")
+    it "should have a bcrypted password that is 60 characters long" do
+      user =  User.new(:id => 1, :email => "test@example.com", :password => "testpassword")
 
-      expect(user.save).to eq(false)
-      expect(user2.save).to eq(false)
+      expect(user.password.length).to eq(60)
     end
   end
 

@@ -97,12 +97,10 @@ class UserTest < Test::Unit::TestCase
     assert_respond_to user, :pictures
   end
 
-  def test_user_should_have_a_password_between_five_and_twenty_characters
-    user =  User.new(:id => 1, :email => "test@example.com", :password => "hi")
-    user2 = User.new(:id => 2, :email => "fake@example.com", :password => "iamaverylongpasswordthatwontwork")
+  def test_user_should_have_a_bcrypted_password_60_characters_long
+    user =  User.new(:id => 1, :email => "test@example.com", :password => "testpassword")
 
-    assert_equal user.save, false
-    assert_equal user2.save, false
+    assert_equal user.password.length, 60
   end
 
 end
