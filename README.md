@@ -3,7 +3,7 @@ Giantpic
 
 About
 -----
-A modular Sinatra app for sharing big images. Uses [Sinatra](http://www.sinatrarb.com/), [grape](http://intridea.github.io/grape/), [DataMapper](http://datamapper.org/), and [Genericons](http://genericons.com/).
+A modular Sinatra app for sharing big images. Uses [Sinatra](http://www.sinatrarb.com/), [Grape](http://intridea.github.io/grape/), [DataMapper](http://datamapper.org/), and [Genericons](http://genericons.com/).
 
 API
 ---
