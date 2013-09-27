@@ -15,57 +15,48 @@ describe "The Giantpic App" do
   it "should redirect to the index page as the root url" do
     get "/"
     follow_redirect!
-
     expect(last_response).to be_ok
     expect("/index").to eq(last_request.path)
   end
 
   it "should have an index page" do
     get "/index"
-
     expect(last_response).to be_ok
   end
 
   it "should have a new image page" do
     get "/images/new"
-
     expect(last_response).to be_ok
   end
 
   it "should have an image show page" do
     get "/image/2"
-
     expect(last_response).to be_ok
   end
 
   it "should have an image edit page" do
     get "/image/2/edit"
-
     expect(last_response).to be_ok
   end
 
   it "should have a sign up page" do
     get "/sign_up"
-
     expect(last_response).to be_ok
   end
 
   it "should have a sign in page" do
     get "/sign_in"
-
     expect(last_response).to be_ok
   end
 
   it "should have a profile page" do
     user = User.new
     get "/user/1"
-
     expect(last_response).to be_ok
   end
 
   it "should have an error page" do
     get "/error"
-
     expect(last_response).to be_ok
   end
 
@@ -73,13 +64,11 @@ describe "The Giantpic App" do
 
     it "should exist when created" do
       user = User.new
-
       expect(user).not_to be_nil
     end
 
     it "should respond to defined attributes" do
       user = User.new
-
       expect(user).to respond_to(:id)
       expect(user).to respond_to(:email)
       expect(user).to respond_to(:password)
@@ -87,13 +76,11 @@ describe "The Giantpic App" do
 
     it "should respond to pictures (as per has many)" do
       user = User.new
-
       expect(user).to respond_to(:pictures)
     end
 
     it "should have a bcrypted password that is 60 characters long" do
       user =  User.new(:id => 1, :email => "test@example.com", :password => "testpassword")
-
       expect(user.password.length).to eq(60)
     end
   end
@@ -102,13 +89,11 @@ describe "The Giantpic App" do
 
     it "should exist when created" do
       pic = Picture.new
-
       expect(pic).not_to be_nil
     end
 
     it "should respond to defined attributes" do
       pic = Picture.new
-
       expect(pic).to respond_to(:id)
       expect(pic).to respond_to(:url)
       expect(pic).to respond_to(:title)
@@ -117,7 +102,6 @@ describe "The Giantpic App" do
 
     it "can be created with attributes" do
       pic = Picture.new(:id => 1, :url => "http://www.example.com", :title => "Test Title", :caption => "Test Caption")
-
       expect(pic.id).to eq(1)
       expect(pic.url).to eq("http://www.example.com")
       expect(pic.title).to eq("Test Title")
@@ -127,26 +111,22 @@ describe "The Giantpic App" do
     it "should be connected to a user through a user_id attribute" do
       user =  User.new(:id => 1)
       photo = Picture.new(:user_id => 1)
-
       expect(photo.user_id).to eq(user.id)
     end
 
     it "should respond to user (as per belongs to)" do
       picture = Picture.new
-
       expect(picture).to respond_to(:user)
     end
 
     it "should not be able to be saved unless it belongs to a user" do
       pic = Picture.new(:id => 1, :url => "http://www.example.com", :title => "Test Title", :caption => "Test Caption")
-
       expect(pic.save).to eq(false)
     end
 
     it "should have a was_submitted_by(current_user) method" do
       pic = Picture.new(:user_id => 1)
       user = User.new(:id => 1)
-
       expect(pic).to respond_to(:was_submitted_by)
       expect(pic.was_submitted_by(user)).to eq(true)
     end

@@ -14,56 +14,47 @@ class GiantpicTest < Test::Unit::TestCase
   def test_it_should_redirect_to_index_page_as_root_path
     get "/"
     follow_redirect!
-
     assert_equal "/index", last_request.path
     assert last_response.ok?
   end
 
   def test_it_has_an_index_page
     get '/index'
-
     assert last_response.ok?
   end
 
   def test_it_has_a_new_image_page
     get "/images/new"
-
     assert last_response.ok?
   end
 
   def test_it_has_an_image_show_page
     get "/image/2"
-
     assert last_response.ok?
   end
 
   def test_it_has_an_image_edit_page
     get "/image/2/edit"
-
     assert last_response.ok?
   end
 
   def test_it_has_a_sign_up_page
     get "/sign_up"
-
     assert last_response.ok?
   end
 
   def test_it_has_a_sign_in_page
     get "/sign_in"
-
     assert last_response.ok?
   end
 
   def test_it_has_a_profile_page
     get "/user/1"
-
     assert last_response.ok?
   end
 
   def test_is_has_an_error_page
     get "/error"
-
     assert last_response.ok?
   end
 
@@ -84,13 +75,11 @@ class UserTest < Test::Unit::TestCase
 
   def test_it_should_exist_when_created
     user = User.new
-
     assert_not_nil user
   end
 
   def test_it_should_respond_to_defined_attributes
     user = User.new
-
     assert_respond_to user, :id
     assert_respond_to user, :email
     assert_respond_to user, :password
@@ -99,7 +88,6 @@ class UserTest < Test::Unit::TestCase
 
   def test_user_should_have_a_bcrypted_password_60_characters_long
     user =  User.new(:id => 1, :email => "test@example.com", :password => "testpassword")
-
     assert_equal user.password.length, 60
   end
 
@@ -109,13 +97,11 @@ class PictureTest < Test::Unit::TestCase
 
   def test_it_should_exist_when_created
     pic = Picture.new
-
     assert_not_nil pic
   end
 
   def test_it_responds_to_defined_attributes
     pic = Picture.new
-
     assert_respond_to pic, :id
     assert_respond_to pic, :url
     assert_respond_to pic, :title
@@ -126,13 +112,11 @@ class PictureTest < Test::Unit::TestCase
   def test_it_should_be_connected_to_a_user_through_a_user_id_attribute
     user =  User.new(:id => 1)
     photo = Picture.new(:user_id => 1)
-
     assert_equal photo.user_id, user.id
   end
 
   def test_it_can_be_created_with_attributes
     pic = Picture.new(:id => 1, :url => "http://www.example.com", :title => "Test Title", :caption => "Test Caption")
-
     assert_equal pic.id, 1
     assert_equal pic.url, "http://www.example.com"
     assert_equal pic.title, "Test Title"
@@ -141,16 +125,13 @@ class PictureTest < Test::Unit::TestCase
 
   def test_it_cant_be_saved_unless_it_belongs_to_a_user
     pic = Picture.new(:id => 1, :url => "http://www.example.com", :title => "Test Title", :caption => "Test Caption")
-
     assert_equal pic.save, false
   end
 
   def test_it_has_a_was_submitted_by_method
     pic = Picture.new(:user_id => 1)
     user = User.new(:id => 1)
-
     assert_respond_to pic, :was_submitted_by
     assert_equal pic.was_submitted_by(user), true
   end
-
 end
