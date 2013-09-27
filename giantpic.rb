@@ -33,6 +33,7 @@ class User
 end
 
 class Giantpic < Sinatra::Base
+  register Sinatra::Flash
 
   configure :development do
     register Sinatra::Reloader
@@ -42,8 +43,6 @@ class Giantpic < Sinatra::Base
   configure :production do
     require "dm-postgres-adapter"
   end
-
-  register Sinatra::Flash
 
   def current_user
     @current_user ||= User.first(:id => session[:user_id])
